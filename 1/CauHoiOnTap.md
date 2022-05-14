@@ -5,7 +5,7 @@
 
 # 2. Tại sao phải đảo ngược tên miền trong <groupId>vn.techmaster</groupId>?
 
-package đi từ lớn đến nhỏ, để phân tách các package dễ hơn
+package đi từ lớn đến nhỏ, để phân tách các package dễ hơn.
 
 # 3. SpringBoot có 2 cơ chế để quản lý thư viện. Hãy kể tên chúng?
 
@@ -50,7 +50,7 @@ Không.
 
 # 12. Trong các annotation @RequestMapping, @GetMapping, @PostMapping… có tham số produces = MediaType.XXXX ý nghĩa tham số này là gì?
 
-Tham số này có định dang kiểu dữ liệu trả về.
+Tham số này định dang kiểu dữ liệu trả về.
 
 # 13. Giải thích ý nghĩa của @RequestBody trong đoạn code dưới đây:
 
