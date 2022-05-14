@@ -127,5 +127,4 @@ return message;
 
 # 14. Cổng mặc định ứng dụng SpringBoot là 8080. Hãy google cách để thay đổi cổng lắng nghe mặc định
 
-Chúng ta có thể thay đổi điều này bắt cách điều chỉnh giá trị server.port trong application.properties
-server.port=8081
+tìm application.properties và thêm server.port=8081
