@@ -90,7 +90,7 @@ public class UserController {
     private UserRepository. userRepo;
 
     @PostMapping("/user")
-    public �User getUserById (@RequestParam String id)) {
+    public User getUserById (@RequestParam String id)) {
         return userRepo.findById(id);
     }
 }
