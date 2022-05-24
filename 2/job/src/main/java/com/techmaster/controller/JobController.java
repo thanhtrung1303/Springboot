@@ -26,17 +26,17 @@ public class JobController {
         public JobController() {
                 jobs = new ConcurrentHashMap<>();
                 jobs.put("JB-01", new Job("JB-01", "Lập trình viên Front-End",
-                                "Thông thạo  HTML, CSS, và ngôn ngữ lập trình JavaScript, các framework như Bootstrap, Foundation, Backbone, AngularJS, và EmberJS",
+                                "HTML, CSS, và ngôn ngữ lập trình JavaScript, các framework như Bootstrap, Foundation, Backbone, AngularJS, và EmberJS",
                                 "Ha Noi", 10000000, 50000000, "abc@gmail.com"));
                 jobs.put("JB-02", new Job("JB-02", "Lập trình viên Back-End",
-                                "Thông thạo PHP, Ruby, Python, Java, và .Net để xây dựng một ứng dụng, và các công cụ như MySQL, Oracle, và SQL Server",
+                                "PHP, Ruby, Python, Java, và .Net để xây dựng một ứng dụng, và các công cụ như MySQL, Oracle, và SQL Server",
                                 "Da Nang", 10000000, 80000000, "abcd@gmail.com"));
                 jobs.put("JB-03",
                                 new Job("JB-03", "Lập trình viên Fullstack",
-                                                "Đảm nhận công việc của font0end và back-end",
+                                                "Đảm nhận công việc của fontend và backend",
                                                 "Da nang", 20000000, 100000000, "abcdef@gmail.com"));
                 jobs.put("JB-04", new Job("JB-04", "Lập trình viên Front-End",
-                                "Thông thạo  HTML, CSS, và ngôn ngữ lập trình JavaScript, các framework như Bootstrap, Foundation, Backbone, AngularJS, và EmberJS",
+                                "HTML, CSS, và ngôn ngữ lập trình JavaScript, các framework như Bootstrap, Foundation, Backbone, AngularJS, và EmberJS",
                                 "Ho Chi Minh", 15000000, 60000000, "qwerty@gmail.com"));
         }
 
