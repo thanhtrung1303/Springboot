@@ -46,7 +46,6 @@
             <td th:text="${job.city}"></td>
             <td th:text="${job.updated_at}"></td>
             <td th:text="${job.created_at}"></td>
-
             <td>
               <form th:action="@{${'update/' + job.id}}" method="PUT">
                 <input type="submit" value="Update" />

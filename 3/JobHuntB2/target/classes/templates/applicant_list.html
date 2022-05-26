@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <title>Danh sách ứng viên</title>
+  </head>
+  <body>
+    <header th:insert="template.html :: topmenu"></header>
+    <div class="container">
+      <h1>Danh sách ứng viên</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Việc làm</th>
+            <th scope="col">Nhà tuyển dụng</th>
+            <th scope="col">Tên ứng viên</th>
+            <th scope="col">Email</th>
+            <th scope="col">Điện thoại</th>
+            <th scope="col">Kỹ năng</th>
+            <th scope="col">Cập nhật</th>
+            <th scope="col">Gỡ bỏ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="applicant, iStat:${applicants}">
+            <td th:text="${iStat.index} +1"></td>
+            <td th:text="${jobRepository.getById(applicant.job_id).title}"></td>
+            <td
+              th:text="${employerRepository.getEmployerById(applicant.job_id)}"
+            ></td>
+            <td th:text="${applicant.name}"></td>
+            <td th:text="${applicant.email}"></td>
+            <td th:text="${applicant.phone}"></td>
+            <td th:text="${applicant.skills}"></td>
+            <td>
+              <form th:action="@{${'update/' + applicant.id}}" method="GET">
+                <input type="submit" value="Update" />
+              </form>
+            </td>
+            <td>
+              <form th:action="@{${'delete/' + applicant.id}}" method="GET">
+                <input type="submit" value="Delete" />
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <button
+          class="btn btn-primary"
+          onclick="window.location.href='/applicant/add'"
+        >
+          Thêm ứng viên
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
