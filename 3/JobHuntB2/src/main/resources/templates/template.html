@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link th:fragment="style" rel="stylesheet" th:href="@{~/css/style.css}" />
+  </head>
+  <body>
+    <div th:fragment="topmenu">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/employer/list">Nhà tuyển dụng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/job/list">Việc làm</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/job/list">Ứng viên</a>
+        </li>
+      </ul>
+    </div>
+    <div th:fragment="footer"></div>
+  </body>
+</html>
