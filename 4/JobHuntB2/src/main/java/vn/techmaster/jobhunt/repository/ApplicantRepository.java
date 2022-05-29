@@ -14,13 +14,13 @@ public class ApplicantRepository {
 
     public ApplicantRepository() {
         applicants = new ConcurrentHashMap<>();
-        applicants.put("app1", new Applicant("app1", "jb1", "Nguyễn Văn A", "nva@mail.com", "123456789",
+        applicants.put("app1", new Applicant("app1", "jb1", "Nguyễn Văn A", "nva@mail.com", "0923456789",
                 List.of(Skill.CSharp, Skill.SQL)));
-        applicants.put("app2", new Applicant("app2", "jb2", "Nguyễn thị B", "ntb@mail.com", "223452129",
+        applicants.put("app2", new Applicant("app2", "jb2", "Nguyễn Thị B", "ntb@mail.com", "0923452129",
                 List.of(Skill.Java, Skill.CSharp)));
-        applicants.put("app3", new Applicant("app3", "jb3", "Nguyễn Văn C", "nvc@mail.com", "323167892",
+        applicants.put("app3", new Applicant("app3", "jb3", "Nguyễn Văn C", "nvc@mail.com", "0923167892",
                 List.of(Skill.CSharp, Skill.SQL, Skill.AWS)));
-        applicants.put("app3", new Applicant("app3", "jb3", "Nguyễn thị D", "ntd@mail.com", "323167892",
+        applicants.put("app3", new Applicant("app3", "jb3", "Nguyễn Thị D", "ntd@mail.com", "093167892",
                 List.of(Skill.CSharp, Skill.SQL, Skill.AWS, Skill.Java)));
     }
 

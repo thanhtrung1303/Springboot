@@ -44,8 +44,9 @@ public class JobController {
 
     @PostMapping("/update/{id}")
     public String updateJob(@PathVariable String id, @ModelAttribute JobRequest request) {
+        LocalDateTime preUpdateTime = jobRepository.getById(id).getCreated_at();
         Job job = new Job(id, request.emp_id(), request.title(), request.description(), request.city(),
-                LocalDateTime.now(), LocalDateTime.now());
+                preUpdateTime, LocalDateTime.now());
         jobRepository.updateJob(job);
         return "redirect:/job/list";
     }

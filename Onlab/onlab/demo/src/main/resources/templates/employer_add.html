@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="template.html :: header('Upload File')"> </head>
+  <body>
+    <nav class="navbar navbar-expanded-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/employer">List Employers</a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mt-5">
+          <form
+            action="#"
+            th:action="@{/employer/add}"
+            method="post"
+            name="employer"
+            enctype="multipart/form-data"
+            th:object="${employer}"
+          >
+            <div class="form-group row">
+              <label for="name" class="col-ms-2 col-form-label">Name</label>
+              <div class="col sm-4">
+                <input
+                  th:field="*{name}"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="website" class="col-ms-2 col-form-label"
+                >Website</label
+              >
+              <div class="col sm-4">
+                <input
+                  th:field="*{website}"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="email" class="col-ms-2 col-form-label">Email</label>
+              <div class="col sm-4">
+                <input
+                  th:field="*{email}"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row mt-3">
+              <label for="logo" class="col-ms-2 col-form-label"
+                >Select a Logo</label
+              >
+              <div class="col sm-4">
+                <input th:field="*{logo}" type="file" class="form-control" />
+              </div>
+            </div>
+            <button class="btn btn-primary mt-3" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
