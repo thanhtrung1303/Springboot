@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="">
   <head>
     <meta charset="UTF-8" />
@@ -14,11 +13,17 @@
   <body>
       <header th:insert="template.html :: topmenu"></header>
     <div class="container border col-6 mt-3">
-      <h1 class="text-center">Cập nhật ứng viên</h1>
+      <h1 class="text-center mt-3">Cập nhật ứng viên</h1>
       <form action="" class="col-12" th:object="${applicant}" method="POST">
-          <label class="form-label">Vị trí ứng tuyển</label>
-          <input type="text" class="form-control">
-          <!-- <input type="text" class="form-control" th:field="*{job_id}" th:text="${jobRepository.getById(applicant.job_id).title}"/> -->
+          <label class="form-label mt-3">Vị trí ứng tuyển</label>
+          <select class="form-select" th:field="*{job_id}">
+            <option
+              th:each="job : ${jobs}"
+              th:value="${job.id}"
+              th:text="${job.title}"
+              >
+            </option>
+          </select>
           <label class="form-label mt-2">Tên</label>
           <input type="text" class="form-control" th:field="*{name}" />
           <label class="form-label mt-2">Email</label>

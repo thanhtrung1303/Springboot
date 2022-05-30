@@ -12,8 +12,8 @@
   </head>
   <body>
     <header th:insert="template.html :: topmenu"></header>
-    <div class="container border col-6">
-      <h1 class="text-center">Thêm công việc</h1>
+    <div class="container border col-6 mt-3">
+      <h1 class="text-center mt-3">Thêm công việc</h1>
       <form class="col-12" th:object="${addJob}" method="POST">
         <div class="form-floating mb-3 mt-3">
           <select class="form-select" th:field="*{emp_id}">
@@ -22,7 +22,6 @@
               th:each="employer : ${employers}"
               th:value="${employer.id}"
               th:text="${employer.name}"
-              th:selected="${addJob.emp_id == employer.id}"
             ></option>
           </select>
         </div>

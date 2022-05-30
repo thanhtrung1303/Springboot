@@ -17,13 +17,13 @@ public class JobRepository {
     public JobRepository() {
         jobs = new ConcurrentHashMap<>();
         jobs.put("jb1",
-                new Job("jb1", "employer1", "Web-design", "Lập trình font-end",
+                new Job("jb1", "employer1", "Web-design", "Lập trình Font-End",
                         City.HoChiMinh, LocalDateTime.now(), LocalDateTime.now()));
         jobs.put("jb2",
-                new Job("jb2", "employer2", "Java-programing", "Lập trình back-end",
+                new Job("jb2", "employer2", "Java-programing", "Lập trình Back-End",
                         City.HaNoi, LocalDateTime.now(), LocalDateTime.now()));
         jobs.put("jb3",
-                new Job("jb3", "employer3", "Fullstack", "Lập trình fullstack",
+                new Job("jb3", "employer3", "Fullstack", "Lập trình Fullstack",
                         City.HaiPhong, LocalDateTime.now(), LocalDateTime.now()));
 
     }

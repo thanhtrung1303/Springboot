@@ -35,7 +35,7 @@ public class EmployerController {
     }
 
     @PostMapping("/add")
-    public String submitAddEmployer(@ModelAttribute EmployerRequest employerRequest) {
+    public String submitEmployer(@ModelAttribute EmployerRequest employerRequest) {
         String id = UUID.randomUUID().toString();
         Employer employer = new Employer(id, employerRequest.name(), employerRequest.logo_path(),
                 employerRequest.website(), employerRequest.email());
@@ -51,7 +51,7 @@ public class EmployerController {
     }
 
     @PostMapping("/update/{id}")
-    public String submitUpdateEmployer(@PathVariable String id, @ModelAttribute EmployerRequest employerRequest) {
+    public String submitEmployer(@PathVariable String id, @ModelAttribute EmployerRequest employerRequest) {
         Employer employer = new Employer(id, employerRequest.name(), employerRequest.logo_path(),
                 employerRequest.website(), employerRequest.email());
         employerRepository.updateEmployer(employer);

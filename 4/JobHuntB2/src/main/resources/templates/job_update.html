@@ -22,7 +22,6 @@
             th:each="employer : ${employers}"
             th:value="${employer.id}"
             th:text="${employer.name}"
-            th:selected="${job.emp_id == employer.id}"
           ></option>
         </select>
         <label for="title" class="form-label mt-2">Công việc</label>
