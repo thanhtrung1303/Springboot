@@ -20,7 +20,7 @@ public class EmployerRepository {
                 new Employer("employer2", "VNG", "logo/vng.png", "http://vng.com.vn",
                         "vng@gmail.com"));
         employers.put("employer3",
-                new Employer("employer3", "Viettel", "logo/viettel.jpg", "https://vietteltelecom.vn",
+                new Employer("employer3", "Viettel", "logo/viettel.png", "https://vietteltelecom.vn",
                         "viettel@gmail.com"));
     }
 

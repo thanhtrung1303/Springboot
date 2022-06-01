@@ -16,6 +16,7 @@ public class EmailController {
     public String showForm() {
         return "send_mail";
     }
+    
     @RequestMapping("applicant/send")
     public String sendMail(@RequestParam("to") String to, 
             @RequestParam("subject") String subject, @RequestParam("content") String content) {

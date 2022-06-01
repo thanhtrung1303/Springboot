@@ -12,21 +12,74 @@
   </head>
   <body>
     <div th:fragment="topmenu">
-      <ul class="nav navbar-expand-sm bg-light ">
-        <li class="nav-item">
-          <a class="nav-link" href="/"><span class="h4 text-danger">Trang chủ</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/employer/list">Nhà tuyển dụng</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/job/list">Việc làm</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/applicant/list">Ứng viên</a>
-        </li>
-      </ul>
+      <nav
+        class="nav navbar-expand-sm bg-info d-flex justify-content-between"
+      >
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link h3 text-danger align-self-center" href="/">Job Hunt</a>
+          </li>
+          <li class="nav-item align-self-center">
+            <a
+              class="nav-link text-white"
+              href="/employer/list"
+              th:text="#{Companies}"
+            ></a>
+          </li>
+          <li class="nav-item align-self-center">
+            <a class="nav-link text-white" href="/job/list" th:text="#{Jobs}"></a>
+          </li>
+          <li class="nav-item align-self-center">
+            <a
+              class="nav-link text-white"
+              href="/applicant/list"
+              th:text="#{Applicants}"
+            ></a>
+          </li>
+        </ul>
+
+        <ul>
+          <li class="nav-item d-flex">
+            <a
+              class="nav-link text-dark align-self-center"
+              type="button"
+              th:text="#{switch-en}"
+              onclick="window.location.href='/?lang=en'"
+            ></a>
+            <div class="align-self-center">|</div>
+            <a
+              class="nav-link text-dark align-self-center"
+              type="button"
+              th:text="#{switch-vn}"
+              onclick="window.location.href='/?lang=vn'"
+            ></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div th:fragment="footermenu">
+      <div class="container mt-5">
+      <div class="row text-center">
+        <div class="col-4">
+          <h3 th:text="#{Companies}"></h3>
+          <a class="text-dark" href="/employer/add" th:text="#{AddCompanies}">Thêm nhà tuyển dụng</a>
+          <br/>
+          <a class="text-dark"  href="/employer/list" th:text="#{CompaniesList}">Danh sách nhà tuyển dụng</a>
+        </div>
+        <div class="col-4">
+          <h3 th:text="#{Jobs}"></h3>
+          <a class="text-dark"  href="/job/add" th:text="#{AddJobs}">Tạo việc làm</a>
+          <br />
+          <a class="text-dark" href="/job/list" th:text="#{JobsList}">Danh sách việc làm</a>
+        </div>
+        <div class="col-4 mb-5">
+          <h3 th:text="#{Applicants}"></h3>
+          <a class="text-dark" href="/applicant/add" th:text="#{AddApplicants}">Thêm ứng viên</a>
+          <br />
+          <a class="text-dark" href="/applicant/list" th:text="#{ApplicantsList}">Danh sách ứng viên</a>
+        </div>
       </div>
-    <div th:fragment="footer"></div>
+    </div>    
+    </div>
   </body>
 </html>

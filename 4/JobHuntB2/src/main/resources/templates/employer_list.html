@@ -24,16 +24,16 @@
   <body>
     <header th:insert="template.html :: topmenu"></header>
     <div class="container mt-3">
-      <h1>Danh sách nhà tuyển dụng</h1>
+      <h1 th:text="#{CompaniesList}">Danh sách nhà tuyển dụng</h1>
       <table class="table table-bordered table-striped text-center mt-3">
         <thead>
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">Nhà tuyển dụng</th>
+            <th scope="col" th:text="#{Companies}">Nhà tuyển dụng</th>
             <th scope="col">Logo</th>
             <th scope="col">Website</th>
             <th scope="col">Email</th>
-            <th scope="col">Tùy chọn</th>
+            <th scope="col" th:text="#{Option}">Tùy chọn</th>
           </tr>
         </thead>
         <tbody>
@@ -127,7 +127,7 @@
 
       <div>
         <form action="/employer/add">
-          <button class="btn btn-primary">Thêm nhà tuyển dụng</button>
+          <button class="btn btn-primary" th:text="#{AddCompanies}">Thêm nhà tuyển dụng</button>
         </form>
       </div>
     </div>

@@ -19,24 +19,24 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <title>Việc làm</title>
+    <title th:text="#{JobsList}">Việc làm</title>
   </head>
   <body>
     <header th:insert="template.html :: topmenu"></header>
 
     <div class="container mt-3">
-      <h1>Danh sách Việc làm</h1>
+      <h1 th:text="#{JobsList}">Danh sách Việc làm</h1>
       <table class="table table-bordered table-striped text-center mt-3">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nhà tuyển dụng</th>
-            <th scope="col">Công việc</th>
-            <th scope="col">Mô tả</th>
-            <th scope="col">Địa điểm</th>
-            <th scope="col">Thời gian khởi tạo</th>
-            <th scope="col">Thời gian cập nhật</th>
-            <th scope="col">Tùy chọn</th>
+            <th scope="col" th:text="#{Companies}">Nhà tuyển dụng</th>
+            <th scope="col" th:text="#{Jobs}">Công việc</th>
+            <th scope="col" th:text="#{Description}">Mô tả</th>
+            <th scope="col" th:text="#{Location}">Địa điểm</th>
+            <th scope="col" th:text="#{InitializationTime}">Thời gian khởi tạo</th>
+            <th scope="col"  th:text="#{UpdateTime}">Thời gian cập nhật</th>
+            <th scope="col"  th:text="#{Option}">Tùy chọn</th>
           </tr>
         </thead>
         <tbody>
@@ -121,7 +121,7 @@
 
       <div>
         <form action="/job/add">
-          <button class="btn btn-primary">Thêm danh sách việc làm</button>
+          <button class="btn btn-primary" th:text="#{AddJobs}">Thêm danh sách việc làm</button>
         </form>
       </div>
     </div>

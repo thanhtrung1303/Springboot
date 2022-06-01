@@ -8,16 +8,16 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <title>Thêm việc làm</title>
+    <title th:text="#{AddJobs}">Thêm việc làm</title>
   </head>
   <body>
     <header th:insert="template.html :: topmenu"></header>
     <div class="container border col-6 mt-3">
-      <h1 class="text-center mt-3">Thêm công việc</h1>
+      <h1 class="text-center mt-3" th:text="#{AddJobs}">Thêm công việc</h1>
       <form class="col-12" th:object="${addJob}" method="POST">
         <div class="form-floating mb-3 mt-3">
           <select class="form-select" th:field="*{emp_id}">
-            <option value="" selected hidden>Chọn nhà tuyển dụng</option>
+            <option value="" selected hidden  th:text="#{ChooseCompany}">Chọn nhà tuyển dụng</option>
             <option
               th:each="employer : ${employers}"
               th:value="${employer.id}"
@@ -34,7 +34,7 @@
             th:field="*{title}"
             placeholder="Enter Job"
           />
-          <label for="title">Công việc</label>
+          <label for="title" th:text="#{Jobs}">Công việc</label>
         </div>
 
         <div class="form-floating mb-3 mt-3">
@@ -45,12 +45,12 @@
             placeholder="Enter description"
             th:field="*{description}"
           />
-          <label for="description" class="form-label">Mô tả</label>
+          <label for="description" class="form-label"  th:text="#{Description}">Mô tả</label>
         </div>
 
         <div class="form-floating mb-3 mt-3">
           <select class="form-select" th:field="*{city}">
-            <option value="" selected hidden>Chọn thành phố</option>
+            <option value="" selected hidden th:text="#{ChooseCity}">Chọn thành phố</option>
             <option
               th:each="city : ${T(vn.techmaster.jobhunt.model.City).values()}"
               th:value="${city}"
@@ -60,7 +60,7 @@
         </div>
 
         <div class="text-center">
-          <button type="submit" class="btn btn-success mb-2">Hoàn tất</button>
+          <button type="submit" class="btn btn-success mb-2" th:text="#{Success}">Hoàn tất</button>
         </div>
       </form>
     </div>

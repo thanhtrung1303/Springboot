@@ -17,11 +17,14 @@ async function getBreedList() {
 
 function displayBreedList(obj) {
   let key = Object.keys(obj);
-
   let html = "";
   for (let i = 0; i < key.length; i++) {
     html += `<option value="${key[i]}">${key[i]}</option>`;
   }
+
+  // for (let breed in breeds) {
+  //     html += `<option value="${breed}">${breed}</option>`;
+  // }
   selectEL.innerHTML = html;
 }
 

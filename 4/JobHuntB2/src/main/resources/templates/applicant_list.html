@@ -21,23 +21,23 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <title>Ứng viên</title>
+    <title th:text="#{ApplicantsList}">Ứng viên</title>
   </head>
   <body>
     <header th:insert="template.html :: topmenu"></header>
     <div class="container mt-3">
-      <h1>Danh sách ứng viên</h1>
+      <h1 th:text="#{ApplicantsList}">Danh sách ứng viên</h1>
       <table class="table table-bordered table-striped text-center mt-3">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Công việc</th>
-            <th scope="col">Nhà tuyển dụng</th>
-            <th scope="col">Tên ứng viên</th>
+            <th scope="col" th:text="#{Jobs}">Công việc</th>
+            <th scope="col" th:text="#{Companies}">Nhà tuyển dụng</th>
+            <th scope="col" th:text="#{Name}">Tên ứng viên</th>
             <th scope="col">Email</th>
-            <th scope="col">Điện thoại</th>
-            <th scope="col">Kỹ năng</th>
-            <th scope="col">Tùy chọn</th>
+            <th scope="col" th:text="#{Phone}">Điện thoại</th>
+            <th scope="col" th:text="#{Skill}">Kỹ năng</th>
+            <th scope="col" th:text="#{Option}">Tùy chọn</th>
           </tr>
         </thead>
         <tbody>
@@ -126,7 +126,7 @@
 
       <div>
         <form action="/applicant/add">
-          <button class="btn btn-primary">Thêm ứng viên</button>
+          <button class="btn btn-primary" th:text="#{AddApplicants}">Thêm ứng viên</button>
         </form>
       </div>
     </div>

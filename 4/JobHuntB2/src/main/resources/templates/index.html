@@ -11,26 +11,105 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <style>
-      body {
-        background-image: url(http://blogtimviec.net/wp-content/uploads/2018/03/cach-tim-viec-lam-hieu-qua.jpg);
-        background-repeat: no-repeat;
-        background-position: left 70px top 10px;
-      }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
     <header th:insert="template.html :: topmenu"></header>
-    <div class="container-fluid">
-      <h1>Nhà tuyển dụng</h1>
-      <a href="/employer/add">Thêm nhà tuyển dụng</a><br />
-      <a href="/employer/list">Danh sách nhà tuyển dụng</a><br />
-      <h1>Việc làm</h1>
-      <a href="/job/add">Tạo việc làm</a><br />
-      <a href="/job/list">Danh sách việc làm</a>
-      <h1>Ứng viên</h1>
-      <a href="/applicant/add">Thêm ứng viên</a><br />
-      <a href="/applicant/list">Danh sách ứng viên</a>
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="0"
+          class="active"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="2"
+        ></button>
+      </div>
+
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="./img/timviec1.jpg"
+            alt="Los Angeles"
+            class="d-block"
+            style="width: 100%"
+            height="750px"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="./img/timviec2.jpg"
+            alt="Chicago"
+            class="d-block"
+            style="width: 100%"
+            height="750px"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="./img/timviec3.jpg"
+            alt="New York"
+            class="d-block"
+            style="width: 100%"
+            height="750px"
+          />
+        </div>
+      </div>
+
+      <!-- Left and right controls/icons -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#demo"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#demo"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
+
+    <!-- <div class="container mt-5">
+      <div class="row text-center">
+        <div class="col-4">
+          <h3>Nhà tuyển dụng</h3>
+          <a class="text-dark" href="/employer/add">Thêm nhà tuyển dụng</a>
+          <br/>
+          <a class="text-dark"  href="/employer/list">Danh sách nhà tuyển dụng</a>
+        </div>
+        <div class="col-4">
+          <h3>Việc làm</h3>
+          <a class="text-dark"  href="/job/add">Tạo việc làm</a>
+          <br />
+          <a class="text-dark" href="/job/list">Danh sách việc làm</a>
+        </div>
+        <div class="col-4 mb-5">
+          <h3>Ứng viên</h3>
+          <a class="text-dark" href="/applicant/add">Thêm ứng viên</a>
+          <br />
+          <a class="text-dark" href="/applicant/list">Danh sách ứng viên</a>
+        </div>
+      </div>
+    </div> -->
+    <footer th:insert="template.html :: footermenu"></footer>
+
   </body>
 </html>

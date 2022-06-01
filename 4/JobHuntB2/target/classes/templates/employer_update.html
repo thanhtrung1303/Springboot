@@ -8,14 +8,14 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <title>Cập nhật nhà tuyển dụng</title>
+    <title th:text="#{UpdateCompany}">Cập nhật nhà tuyển dụng</title>
   </head>
   <body>
     <header th:insert="template.html :: topmenu"></header>
     <div class="container border col-6 mt-3">
-    <h2 class="text-center mt-2">Cập nhật nhà tuyển dụng</h2>
+    <h2 class="text-center mt-2" th:text="#{UpdateCompany}">Cập nhật nhà tuyển dụng</h2>
     <form class="col-12" action="" th:object="${employer}" method="POST">
-        <label class="form-label">Tên nhà tuyển dụng</label>
+        <label class="form-label" th:text="#{NameCompany}">Tên nhà tuyển dụng</label>
         <input type="text" class="form-control" th:field="*{name}" />
         <label type="text" class="form-label">Logo</label>
         <input type="file" class="form-control" th:field="*{logo_path}" />
@@ -24,7 +24,7 @@
         <label class="form-label">Email</label>
         <input type="text" class="form-control" th:field="*{email}" />
         <div class="text-center mt-2">
-        <button type="submit" class="btn btn-success mb-2">Cập nhật</button>        
+        <button type="submit" class="btn btn-success mb-2" th:text="#{Update}">Cập nhật</button>        
       </div>
       </div>
     </form>

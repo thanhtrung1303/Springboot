@@ -8,14 +8,14 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <title>Cập nhật ứng viên</title>
+    <title th:text="#{UpdateApplicant}">Cập nhật ứng viên</title>
   </head>
   <body>
       <header th:insert="template.html :: topmenu"></header>
     <div class="container border col-6 mt-3">
-      <h1 class="text-center mt-3">Cập nhật ứng viên</h1>
+      <h1 class="text-center mt-3" th:text="#{UpdateApplicant}">Cập nhật ứng viên</h1>
       <form action="" class="col-12" th:object="${applicant}" method="POST">
-          <label class="form-label mt-3">Vị trí ứng tuyển</label>
+          <label class="form-label mt-3" th:text="#{Jobs}">Vị trí ứng tuyển</label>
           <select class="form-select" th:field="*{job_id}">
             <option
               th:each="job : ${jobs}"
@@ -24,18 +24,18 @@
               >
             </option>
           </select>
-          <label class="form-label mt-2">Tên</label>
+          <label class="form-label mt-2" th:text="#{Name}">Tên</label>
           <input type="text" class="form-control" th:field="*{name}" />
           <label class="form-label mt-2">Email</label>
           <input type="text" class="form-control" th:field="*{email}" />
-          <label class="form-label mt-2">Phone</label>
+          <label class="form-label mt-2" th:text="#{Phone}">Phone</label>
           <input type="text" class="form-control" th:field="*{phone}" />
-          <label class="form-label mt-2" for="skill">Skill: </label>
+          <label class="form-label mt-2" for="skill" th:text="#{Skill}">Skill: </label>
           <span class="mt-2 " th:each="skill : ${T(vn.techmaster.jobhunt.model.Skill).values()}">
           <input class="ms-3" type="checkbox" th:value="${skill}" th:field="*{skills}" th:text="${skill.label}">
         </span>
           <div class=" text-center mt-2">
-        <button type="submit" class="btn btn-success mb-2">Cập nhật</button>
+        <button type="submit" class="btn btn-success mb-2" th:text="#{Update}">Cập nhật</button>
         </div>
       </form>
       </div>
