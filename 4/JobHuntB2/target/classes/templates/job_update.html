@@ -8,6 +8,8 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <title th:text="#{UpdateJobs}">Cập nhật việc làm</title>
   </head>
   <body>
@@ -16,7 +18,7 @@
     <div class="container border col-6 mt-3">
       <h1 class="text-center" th:text="#{UpdateJobs}">Cập nhật việc làm</h1>
       <form action="" class="col-12" th:object="${job}" method="POST">
-        <label for="name" class="form-label" th:text="#{NameCompany}">Nhà tuyển dụng</label>
+        <label for="name" class="form-label ms-1" th:text="#{NameCompany}">Nhà tuyển dụng</label>
         <select class="form-select" th:field="*{emp_id}">
           <option
             th:each="employer : ${employers}"
@@ -24,21 +26,21 @@
             th:text="${employer.name}"
           ></option>
         </select>
-        <label for="title" class="form-label mt-2" th:text="#{Jobs}">Công việc</label>
+        <label for="title" class="form-label mt-2 ms-1" th:text="#{Jobs}">Công việc</label>
         <input
           type="text"
           class="form-control"
           name="title"
           th:field="*{title}"
         />
-        <label for="description" class="form-label mt-2" th:text="#{Description}">Mô tả</label>
+        <label for="description" class="form-label mt-2 ms-1" th:text="#{Description}">Mô tả</label>
         <input
           type="text"
           class="form-control"
           name="description"
           th:field="*{description}"
         />
-        <label for="city" class="form-label mt-2" th:text="#{Location}">Địa điểm</label>
+        <label for="city" class="form-label mt-2 ms-1" th:text="#{Location}">Địa điểm</label>
         <select class="form-select mt-2" th:field="*{city}">
           <option
             th:each="city : ${T(vn.techmaster.jobhunt.model.City).values()}"

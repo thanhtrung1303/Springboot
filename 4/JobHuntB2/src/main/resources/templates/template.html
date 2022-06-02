@@ -9,32 +9,48 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
   </head>
   <body>
     <div th:fragment="topmenu">
-      <nav
-        class="nav navbar-expand-sm bg-info d-flex justify-content-between"
-      >
+      <nav class="nav navbar-expand-sm bg-info d-flex justify-content-between">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link h3 text-danger align-self-center" href="/">Job Hunt</a>
+            <a class="nav-link h3 text-danger align-self-center" href="/">Job Hunt
+            </a>
           </li>
-          <li class="nav-item align-self-center">
-            <a
-              class="nav-link text-white"
-              href="/employer/list"
+
+          <li type="button" class="nav-item align-self-center">
+            <a class="nav-link text-white dropdown-toggle"
+              data-bs-toggle="dropdown"
               th:text="#{Companies}"
             ></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/employer/list" th:text="#{CompaniesList}">Danh sách nhà tuyển dụng</a></li>
+              <li><a class="dropdown-item" href="/employer/add" th:text="#{AddCompanies}">Thêm nhà tuyển dụng</a></li>
+            </ul>
           </li>
-          <li class="nav-item align-self-center">
-            <a class="nav-link text-white" href="/job/list" th:text="#{Jobs}"></a>
+
+          <li type="button" class="nav-item align-self-center">
+            <a class="nav-link text-white dropdown-toggle"
+              data-bs-toggle="dropdown"
+              th:text="#{Jobs}">
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/job/list" th:text="#{JobsList}">Danh sách nhà tuyển dụng</a></li>
+              <li><a class="dropdown-item" href="/job/add" th:text="#{AddJobs}">Thêm nhà tuyển dụng</a></li>
+            </ul>
           </li>
-          <li class="nav-item align-self-center">
-            <a
-              class="nav-link text-white"
-              href="/applicant/list"
-              th:text="#{Applicants}"
-            ></a>
+
+          <li type="button" class="nav-item align-self-center">
+            <a class="nav-link text-white dropdown-toggle"
+              data-bs-toggle="dropdown"
+              th:text="#{Applicants}"></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/applicant/list" th:text="#{ApplicantsList}">Danh sách nhà tuyển dụng</a></li>
+              <li><a class="dropdown-item" href="/applicant/add" th:text="#{AddApplicants}">Thêm nhà tuyển dụng</a></li>
+            </ul>
           </li>
         </ul>
 
@@ -59,27 +75,48 @@
     </div>
     <div th:fragment="footermenu">
       <div class="container mt-5">
-      <div class="row text-center">
-        <div class="col-4">
-          <h3 th:text="#{Companies}"></h3>
-          <a class="text-dark" href="/employer/add" th:text="#{AddCompanies}">Thêm nhà tuyển dụng</a>
-          <br/>
-          <a class="text-dark"  href="/employer/list" th:text="#{CompaniesList}">Danh sách nhà tuyển dụng</a>
-        </div>
-        <div class="col-4">
-          <h3 th:text="#{Jobs}"></h3>
-          <a class="text-dark"  href="/job/add" th:text="#{AddJobs}">Tạo việc làm</a>
-          <br />
-          <a class="text-dark" href="/job/list" th:text="#{JobsList}">Danh sách việc làm</a>
-        </div>
-        <div class="col-4 mb-5">
-          <h3 th:text="#{Applicants}"></h3>
-          <a class="text-dark" href="/applicant/add" th:text="#{AddApplicants}">Thêm ứng viên</a>
-          <br />
-          <a class="text-dark" href="/applicant/list" th:text="#{ApplicantsList}">Danh sách ứng viên</a>
+        <div class="row text-center">
+          <div class="col-4 nav-item">
+            <h3 th:text="#{Companies}"></h3>
+            <a class="text-dark" href="/employer/add" th:text="#{AddCompanies}"
+              >Thêm nhà tuyển dụng</a
+            >
+            <br />
+            <a
+              class="text-dark"
+              href="/employer/list"
+              th:text="#{CompaniesList}"
+              >Danh sách nhà tuyển dụng</a
+            >
+          </div>
+          <div class="col-4">
+            <h3 th:text="#{Jobs}"></h3>
+            <a class="text-dark" href="/job/add" th:text="#{AddJobs}"
+              >Tạo việc làm</a
+            >
+            <br />
+            <a class="text-dark" href="/job/list" th:text="#{JobsList}"
+              >Danh sách việc làm</a
+            >
+          </div>
+          <div class="col-4 mb-5">
+            <h3 th:text="#{Applicants}"></h3>
+            <a
+              class="text-dark"
+              href="/applicant/add"
+              th:text="#{AddApplicants}"
+              >Thêm ứng viên</a
+            >
+            <br />
+            <a
+              class="text-dark"
+              href="/applicant/list"
+              th:text="#{ApplicantsList}"
+              >Danh sách ứng viên</a
+            >
+          </div>
         </div>
       </div>
-    </div>    
     </div>
   </body>
 </html>

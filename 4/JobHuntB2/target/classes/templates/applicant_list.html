@@ -44,9 +44,8 @@
           <tr th:each="applicant, iStat:${applicants}">
             <td th:text="${iStat.index} +1"></td>
             <td th:text="${jobRepository.getById(applicant.job_id).title}"></td>
-            <td
-              th:text="${employerRepository.getEmployerById(jobRepository.getById(applicant.job_id).emp_id).name}"
-            ></td>
+            <td th:text="${employerRepository.getEmployerById(jobRepository.getById(applicant.job_id).emp_id).name}">
+            </td>
             <td th:text="${applicant.name}"></td>
             <td th:text="${applicant.email}"></td>
             <td th:text="${applicant.phone}"></td>

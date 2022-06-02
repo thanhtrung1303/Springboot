@@ -8,6 +8,8 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <title th:text="#{AddJobs}">Thêm việc làm</title>
   </head>
   <body>
@@ -17,7 +19,6 @@
       <form class="col-12" th:object="${addJob}" method="POST">
         <div class="form-floating mb-3 mt-3">
           <select class="form-select" th:field="*{emp_id}">
-            <option value="" selected hidden  th:text="#{ChooseCompany}">Chọn nhà tuyển dụng</option>
             <option
               th:each="employer : ${employers}"
               th:value="${employer.id}"
@@ -45,12 +46,13 @@
             placeholder="Enter description"
             th:field="*{description}"
           />
-          <label for="description" class="form-label"  th:text="#{Description}">Mô tả</label>
+          <label for="description" class="form-label" th:text="#{Description}"
+            >Mô tả</label
+          >
         </div>
 
         <div class="form-floating mb-3 mt-3">
           <select class="form-select" th:field="*{city}">
-            <option value="" selected hidden th:text="#{ChooseCity}">Chọn thành phố</option>
             <option
               th:each="city : ${T(vn.techmaster.jobhunt.model.City).values()}"
               th:value="${city}"
@@ -60,7 +62,13 @@
         </div>
 
         <div class="text-center">
-          <button type="submit" class="btn btn-success mb-2" th:text="#{Success}">Hoàn tất</button>
+          <button
+            type="submit"
+            class="btn btn-success mb-2"
+            th:text="#{Success}"
+          >
+            Hoàn tất
+          </button>
         </div>
       </form>
     </div>
