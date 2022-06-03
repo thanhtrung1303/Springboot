@@ -1,8 +1,6 @@
 package vn.techmaster.jobhunt.exception;
 
 public class StorageException extends RuntimeException {
-    private static final long serialVersionUID = 6288365963802085889L;
-
     public StorageException(String message) {
         super(message);
     }

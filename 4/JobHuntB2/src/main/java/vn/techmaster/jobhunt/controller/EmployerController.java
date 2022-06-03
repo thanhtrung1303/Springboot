@@ -1,26 +1,32 @@
 package vn.techmaster.jobhunt.controller;
 
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import vn.techmaster.jobhunt.model.Employer;
 import vn.techmaster.jobhunt.repository.EmployerRepository;
 import vn.techmaster.jobhunt.request.EmployerRequest;
+import vn.techmaster.jobhunt.service.StorageService;
+
+import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/employer")
 public class EmployerController {
+
     @Autowired
     private EmployerRepository employerRepository;
+
+    @Autowired
+    private StorageService storageService;
 
     @GetMapping("/list")
     public String employerList(Model model) {
@@ -29,17 +35,35 @@ public class EmployerController {
     }
 
     @GetMapping("/add")
-    public String addEmployer(Model model) {
-        model.addAttribute("employer", new Employer());
+    public String addEmployerForm(Model model) {
+        model.addAttribute("employer", new EmployerRequest("", "", "", "", null));
         return "employer_add";
     }
 
-    @PostMapping("/add")
-    public String submitEmployer(@ModelAttribute EmployerRequest employerRequest) {
-        String id = UUID.randomUUID().toString();
-        Employer employer = new Employer(id, employerRequest.name(), employerRequest.logo_path(),
-                employerRequest.website(), employerRequest.email());
-        employerRepository.createEmployer(employer);
+    @PostMapping(value = "/add", consumes = { "multipart/form-data" })
+    public String addEmployer(@Valid @ModelAttribute("employer") EmployerRequest employerRequest,
+                              BindingResult result,
+                              Model model) {
+        if (employerRequest.logo().getOriginalFilename().isEmpty()) {
+            result.addError(new FieldError("employer", "logo", "Logo is required"));
+        }
+
+        if (result.hasErrors()) {
+            return "employer_add";
+        }
+
+        Employer emp = employerRepository.createEmployer(Employer.builder()
+                .name(employerRequest.name())
+                .website(employerRequest.website())
+                .email(employerRequest.email())
+                .build());
+
+        try {
+            String logoFileName = storageService.saveFile(employerRequest.logo(), emp.getId());
+            employerRepository.updateLogo(emp.getId(), logoFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:/employer/list";
     }
 
@@ -51,9 +75,11 @@ public class EmployerController {
     }
 
     @PostMapping("/update/{id}")
-    public String submitEmployer(@PathVariable String id, @ModelAttribute EmployerRequest employerRequest) {
-        Employer employer = new Employer(id, employerRequest.name(), employerRequest.logo_path(),
+    public String updateEmployer(@PathVariable String id, @ModelAttribute EmployerRequest employerRequest) {
+        Employer employer = new Employer(id, employerRequest.name(),
+                employerRepository.getEmployerById(id).getLogo_path(),
                 employerRequest.website(), employerRequest.email());
+
         employerRepository.updateEmployer(employer);
         return "redirect:/employer/list";
     }
