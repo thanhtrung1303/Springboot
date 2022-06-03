@@ -34,7 +34,11 @@ public class ColorService {
     }
 
     public String randomRgbColor() {
-        Random numGen = new Random();
-        return new String(numGen.nextInt(256) + ", " + numGen.nextInt(256) + ", " + numGen.nextInt(256));
+        Random rd = new Random();
+        int r = rd.nextInt(256);
+        int g = rd.nextInt(256);
+        int b = rd.nextInt(256);
+
+        return "rgb(" + r +"," + g + "," + b + ")";
     }
 }

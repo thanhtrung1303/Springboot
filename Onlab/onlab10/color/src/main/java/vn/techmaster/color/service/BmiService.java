@@ -10,6 +10,6 @@ public class BmiService {
         if (height <= 0 || weight <= 0) {
             throw new BadRequestException("Khong hop le");
         }
-        return height / (weight * weight);
+        return weight / (height * height);
     }
 }
