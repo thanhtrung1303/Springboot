@@ -15,10 +15,10 @@
   <body>
     <header th:insert="template.html :: topmenu"></header>
 
-    <div class="container border col-6 mt-3">
-      <h1 class="text-center" th:text="#{UpdateJobs}">Cập nhật việc làm</h1>
+    <div class="container border rounded col-4 mt-5 bg-light">
+      <h1 class="text-center mt-3" th:text="#{UpdateJobs}">Cập nhật việc làm</h1>
       <form action="" class="col-12" th:object="${job}" method="POST">
-        <label for="name" class="form-label ms-1" th:text="#{NameCompany}">Nhà tuyển dụng</label>
+        <label for="name" class="form-label ms-1 mt-3" th:text="#{NameCompany}">Nhà tuyển dụng</label>
         <select class="form-select" th:field="*{emp_id}">
           <option
             th:each="employer : ${employers}"
@@ -48,8 +48,8 @@
             th:text="${city.label}"
           ></option>
         </select>
-        <div class="text-center mt-2">
-          <button type="submit" class="btn btn-success mb-2"  th:text="#{Update}">Cập nhật</button>
+        <div class="text-center mt-3">
+          <button type="submit" class="btn btn-success mb-3"  th:text="#{Update}">Cập nhật</button>
         </div>
       </form>
     </div>

@@ -47,7 +47,7 @@
             </td>
             <td>
               <img
-                th:src="@{${'~/' + employer.logo_path}}"
+                th:src="|/logo/${employer.logo_path}|"
                 alt=""
                 class="logo"
                 width="100px"

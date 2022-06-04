@@ -13,7 +13,7 @@
 </head>
 <body>
 <header th:insert="template.html :: topmenu"></header>
-<div class="container border col-6 mt-3">
+<div class="container border rounded col-4 mt-5 bg-light">
         <h1 class="text-center mt-3" th:text="#{AddApplicants}">Thêm ứng viên</h1>
         <form th:object="${applicant}" method="POST">
             <div class="mb-3">

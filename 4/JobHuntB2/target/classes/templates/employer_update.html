@@ -13,19 +13,19 @@
   </head>
   <body>
     <header th:insert="template.html :: topmenu"></header>
-    <div class="container border col-6 mt-3">
-    <h2 class="text-center mt-2" th:text="#{UpdateCompany}">Cập nhật nhà tuyển dụng</h2>
+    <div class="container border rounded col-4 mt-5 bg-light ">
+    <h2 class="text-center mt-3" th:text="#{UpdateCompany}">Cập nhật nhà tuyển dụng</h2>
     <form class="col-12" action="" th:object="${employer}" method="POST">
-        <label class="form-label" th:text="#{NameCompany}">Tên nhà tuyển dụng</label>
+        <label class="form-label ms-1 mt-3" th:text="#{NameCompany}">Tên nhà tuyển dụng</label>
         <input type="text" class="form-control" th:field="*{name}" />
-        <label type="text" class="form-label">Logo</label>
+        <label type="text" class="form-label ms-1">Logo</label>
         <input type="file" class="form-control" th:field="*{logo_path}" />
-        <label class="form-label">Website</label>
+        <label class="form-label ms-1">Website</label>
         <input type="text" class="form-control" th:field="*{website}" />
-        <label class="form-label">Email</label>
+        <label class="form-label ms-1">Email</label>
         <input type="text" class="form-control" th:field="*{email}" />
         <div class="text-center mt-2">
-        <button type="submit" class="btn btn-success mb-2" th:text="#{Update}">Cập nhật</button>        
+        <button type="submit" class="btn btn-success mb-3" th:text="#{Update}">Cập nhật</button>        
       </div>
       </div>
     </form>

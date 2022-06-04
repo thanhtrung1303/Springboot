@@ -15,13 +15,13 @@ public class EmployerRepository {
     public EmployerRepository() {
         employers = new ConcurrentHashMap<>();
         employers.put("employer1",
-                new Employer("employer1", "FPT", "logo/fpt.png", "http://fpt.com.vn",
+                new Employer("employer1", "FPT", "fpt.png", "http://fpt.com.vn",
                         "fpt@gmail.com"));
         employers.put("employer2",
-                new Employer("employer2", "VNG", "logo/vng.png", "http://vng.com.vn",
+                new Employer("employer2", "VNG", "vng.png", "http://vng.com.vn",
                         "vng@gmail.com"));
         employers.put("employer3",
-                new Employer("employer3", "Viettel", "logo/viettel.png", "https://vietteltelecom.vn",
+                new Employer("employer3", "Viettel", "viettel.png", "https://vietteltelecom.vn",
                         "viettel@gmail.com"));
     }
 
@@ -39,7 +39,7 @@ public class EmployerRepository {
         employers.put(id, employer);
         return employer;
     }
-    
+
     public void updateEmployer(Employer employer) {
         employers.put(employer.getId(), employer);
     }
