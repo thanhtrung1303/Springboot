@@ -1,15 +1,15 @@
-package vn.techmaster.color.model;
+package com.example.userbackend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-    @AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
-public class User {
+@Getter
+public class UserDto {
     private int id;
-    private String username, email, password, avatar;
+    private String name, email, phone, address, avatar;
 }
