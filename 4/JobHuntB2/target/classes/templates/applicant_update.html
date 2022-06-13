@@ -14,7 +14,7 @@
   <body>
       <header th:insert="template.html :: topmenu"></header>
     <div class="container border rounded col-4 mt-5 bg-light">
-      <h1 class="text-center mt-3" th:text="#{UpdateApplicant}">Cập nhật ứng viên</h1>
+      <h1 class="text-center text-info mt-3" th:text="#{UpdateApplicant}">Cập nhật ứng viên</h1>
       <form action="" class="col-12" th:object="${applicant}" method="POST">
           <label class="form-label mt-3 ms-1" th:text="#{Jobs}">Vị trí ứng tuyển</label>
           <select class="form-select" th:field="*{job_id}">

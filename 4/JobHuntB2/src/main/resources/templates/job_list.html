@@ -25,7 +25,28 @@
     <header th:insert="template.html :: topmenu"></header>
 
     <div class="container mt-3">
-      <h1 th:text="#{JobsList}">Danh sách Việc làm</h1>
+      <div class="d-flex">
+        <div class="col-9">
+          <h1 class="text-info" th:text="#{JobsList}">Danh sách Việc làm</h1>
+        </div>
+
+        <div class="col-3 mt-3">
+          <form action="" th:action="@{/job/list}" method="get">
+            <div class="input-group">
+              <input
+                type="search"
+                name="keyword"
+                class="form-control"
+                placeholder="Search Job-Location"
+              />
+              <button type="submit" class="btn btn-outline-info">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
       <table class="table table-bordered table-striped text-center mt-3">
         <thead>
           <tr>
@@ -34,14 +55,16 @@
             <th scope="col" th:text="#{Jobs}">Công việc</th>
             <th scope="col" th:text="#{Description}">Mô tả</th>
             <th scope="col" th:text="#{Location}">Địa điểm</th>
-            <th scope="col" th:text="#{InitializationTime}">Thời gian khởi tạo</th>
-            <th scope="col"  th:text="#{UpdateTime}">Thời gian cập nhật</th>
-            <th scope="col"  th:text="#{Option}">Tùy chọn</th>
+            <th scope="col" th:text="#{InitializationTime}">
+              Thời gian khởi tạo
+            </th>
+            <th scope="col" th:text="#{UpdateTime}">Thời gian cập nhật</th>
+            <th scope="col" th:text="#{Option}">Tùy chọn</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="job, iStat:${jobs}">
-            <td th:text="${iStat.index} +1"></td>
+            <td th:text="${iStat.index} + 1"></td>
             <td
               th:text="${employerRepository.getEmployerById(job.emp_id).name}"
             ></td>
@@ -91,10 +114,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Xóa việc làm</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal">
+              <button type="button" class="btn-close" data-bs-dismiss="modal">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -121,7 +141,9 @@
 
       <div>
         <form action="/job/add">
-          <button class="btn btn-primary" th:text="#{AddJobs}">Thêm danh sách việc làm</button>
+          <button class="btn btn-outline-primary" th:text="#{AddJobs}">
+            Thêm danh sách việc làm
+          </button>
         </form>
       </div>
     </div>

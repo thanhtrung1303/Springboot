@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jobhunt" />
+        <module name="JobHuntB2" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="JobHuntB2" options="-parameters" />
       <module name="jobhunt" options="-parameters" />
     </option>
   </component>

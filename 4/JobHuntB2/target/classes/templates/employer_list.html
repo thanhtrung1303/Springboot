@@ -24,7 +24,31 @@
   <body>
     <header th:insert="template.html :: topmenu"></header>
     <div class="container mt-3">
-      <h1 th:text="#{CompaniesList}">Danh sách nhà tuyển dụng</h1>
+      <div class="d-flex">
+        <div class="col-9">
+          <h1 class="text-info" th:text="#{CompaniesList}">
+            Danh sách nhà tuyển dụng
+          </h1>
+        </div>
+
+        <div class="col-3 mt-3">
+          <form action="" th:action="@{/employer/list}" method="get">
+          <div class="input-group">
+              <input
+                type="search"
+                id="form"
+                name="keyword"
+                class="form-control"
+                placeholder="Search Company"
+              />
+              <button type="submit" class="btn btn-outline-info">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
       <table class="table table-bordered table-striped text-center mt-3">
         <thead>
           <tr>
@@ -41,7 +65,7 @@
             <td th:text="${iStat.index} +1"></td>
             <td>
               <a
-                th:href="@{${'update/' + employer.id}}"
+                th:href="|update/${employer.id}|"
                 th:text="${employer.name}"
               ></a>
             </td>
@@ -49,7 +73,6 @@
               <img
                 th:src="|/logo/${employer.logo_path}|"
                 alt=""
-                class="logo"
                 width="100px"
                 height="50px"
               />
@@ -62,22 +85,27 @@
             </td>
             <td th:text="${employer.email}"></td>
             <td>
-              <a class="btn btn-outline-warning"
-              th:href="@{${'update/' + employer.id}}" method="PUT">
+              <a
+                class="btn btn-outline-warning"
+                th:href="@{${'update/' + employer.id}}"
+                method="PUT"
+              >
                 <i class="bi bi-pencil-square"></i>
               </a>
-              <a th:data-id="${employer.id}"
+              <a
+                th:data-id="${employer.id}"
                 th:data-name="${employer.name}"
                 onclick="showConfirmModalDialog(this.getAttribute('data-id'), this.getAttribute('data-name'))"
-                class="btn btn-outline-danger ms-2">
+                class="btn btn-outline-danger ms-2"
+              >
                 <i class="bi bi-trash"></i>
               </a>
             </td>
           </tr>
         </tbody>
       </table>
-      
-       <script>
+
+      <script>
         function showConfirmModalDialog(id, name) {
           $("#employerName").text(name);
           $("#yesOption").attr("href", "/employer/delete/" + id);
@@ -96,11 +124,10 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Xóa nhà tuyển dụng</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Xóa nhà tuyển dụng
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -127,7 +154,9 @@
 
       <div>
         <form action="/employer/add">
-          <button class="btn btn-primary" th:text="#{AddCompanies}">Thêm nhà tuyển dụng</button>
+          <button class="btn btn-outline-primary" th:text="#{AddCompanies}">
+            Thêm nhà tuyển dụng
+          </button>
         </form>
       </div>
     </div>

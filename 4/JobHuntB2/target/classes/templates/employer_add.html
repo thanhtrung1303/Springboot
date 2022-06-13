@@ -16,34 +16,94 @@
     <header th:insert="template.html :: topmenu"></header>
 
     <div class="container col-4 border rounded mt-5 bg-light">
+      <h1 class="mt-3 text-center text-info" th:text="#{AddCompanies}">
+        Thêm nhà tuyển dụng
+      </h1>
 
-        <h1 class="mt-3 text-center" th:text="#{AddCompanies}">Thêm nhà tuyển dụng</h1>
-        
-    <form class="col-12" th:object="${employer}" th:action="@{/employer/add}" method="POST"  enctype="multipart/form-data">
-      <div class="form-floating mb-3 mt-3">
-        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" th:field="*{name}" autocomplete="off"/>
-        <label class="form-label"  th:text="#{NameCompany}">Tên công ty</label>
-        <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
-      </div>
-      
-      <div class="form-floating mb-3 mt-3">
-        <input type="text" class="form-control" id="website" placeholder="Enter website" name="website" th:field="*{website}" autocomplete="off" />
-        <label class="form-label">Website</label>
-        <div class="text-danger" th:if="${#fields.hasErrors('website')}" th:errors="*{website}">Website Error</div>
-      </div>
-
-      <input type="file" class="form-control" th:field="*{logo}" />
-      <div class="text-danger" th:if="${#fields.hasErrors('logo')}" th:errors="*{logo}">Logo Error</div>
-      <div class="form-floating mb-3 mt-3">
-        <input type="text" class="form-control" placeholder="Enter Email" th:field="*{email}" autocomplete="off"/>
-        <label class="form-label">Email</label>
-        <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+      <form
+        class="col-12"
+        th:object="${employer}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3 mt-4">
+          <label class="form-label ms-1" th:text="#{NameCompany}"
+            >Tên công ty</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter name"
+            name="name"
+            th:field="*{name}"
+            autocomplete="off"
+          />
+          <div
+            class="text-danger"
+            th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}"
+          >
+            Name Error
+          </div>
         </div>
-      <div class="mt-2 text-center" >
-      <button type="submit" class="btn btn-success mb-3 " th:text="#{Success}">Hoàn tất</button>
-      </div>
-    </form>
-    </div>
 
+        <div class="mb-3 mt-3">
+          <label class="form-label ms-1">Website</label>
+          <input
+            type="text"
+            class="form-control"
+            id="website"
+            placeholder="Enter website"
+            name="website"
+            th:field="*{website}"
+            autocomplete="off"
+          />
+          <div
+            class="text-danger"
+            th:if="${#fields.hasErrors('website')}"
+            th:errors="*{website}"
+          >
+            Website Error
+          </div>
+        </div>
+
+          <label class="form-label ms-1"> Logo</label>
+        <input type="file" class="form-control" th:field="*{logo}" />
+        <div
+          class="text-danger"
+          th:if="${#fields.hasErrors('logo')}"
+          th:errors="*{logo}"
+        >
+          Logo Error
+        </div>
+        <div class="form mb-3 mt-3">
+          <label class="form-label ms-1">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Email"
+            th:field="*{email}"
+            autocomplete="off"
+          />
+          <div
+            class="text-danger"
+            th:if="${#fields.hasErrors('email')}"
+            th:errors="*{email}"
+          >
+            Email Error
+          </div>
+        </div>
+        <div class="mt-2 text-center">
+          <button
+            type="submit"
+            class="btn btn-success mb-3"
+            th:text="#{Success}"
+          >
+            Hoàn tất
+          </button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

@@ -28,9 +28,13 @@ public class JobController {
     private EmployerRepository employerRepository;
 
     @GetMapping("/list")
-    public String listJob(Model model) {
-        model.addAttribute("jobs", jobRepository.listjob());
+    public String listJob(Model model, String keyword) {
         model.addAttribute("employerRepository", employerRepository);
+        if (keyword != null) {
+            model.addAttribute("jobs", jobRepository.findByKeyword(keyword));
+        } else {
+            model.addAttribute("jobs", jobRepository.listjob());
+        }
         return "job_list";
     }
 

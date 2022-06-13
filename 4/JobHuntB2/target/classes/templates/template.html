@@ -74,42 +74,42 @@
       </nav>
     </div>
     <div th:fragment="footermenu">
-      <div class="container col-6 mt-5">
-        <div class="row text-center">
-          <div class="col-4 nav-item">
-            <h3 th:text="#{Companies}"></h3>
-            <a class="text-dark" href="/employer/add" th:text="#{AddCompanies}"
+      <div class="container mt-5">
+        <div class="row ms-5">
+          <div class="col-4 nav-item ">
+            <h5 class="ms-5 text-info" th:text="#{Companies}"></h5>
+            <a class="text-dark ms-5" href="/employer/add" th:text="#{AddCompanies}"
               >Thêm nhà tuyển dụng</a
             >
             <br />
             <a
-              class="text-dark"
+              class="text-dark ms-5"
               href="/employer/list"
               th:text="#{CompaniesList}"
               >Danh sách nhà tuyển dụng</a
             >
           </div>
           <div class="col-4">
-            <h3 th:text="#{Jobs}"></h3>
-            <a class="text-dark" href="/job/add" th:text="#{AddJobs}"
+            <h5 class="ms-5 text-info" th:text="#{Jobs}"></h5>
+            <a class="text-dark ms-5" href="/job/add" th:text="#{AddJobs}"
               >Tạo việc làm</a
             >
             <br />
-            <a class="text-dark" href="/job/list" th:text="#{JobsList}"
+            <a class="text-dark ms-5" href="/job/list" th:text="#{JobsList}"
               >Danh sách việc làm</a
             >
           </div>
           <div class="col-4 mb-5">
-            <h3 th:text="#{Applicants}"></h3>
+            <h5 class="ms-5 text-info" th:text="#{Applicants}"></h5>
             <a
-              class="text-dark"
+              class="text-dark ms-5"
               href="/applicant/add"
               th:text="#{AddApplicants}"
               >Thêm ứng viên</a
             >
             <br />
             <a
-              class="text-dark"
+              class="text-dark ms-5"
               href="/applicant/list"
               th:text="#{ApplicantsList}"
               >Danh sách ứng viên</a

@@ -3,6 +3,7 @@ package vn.techmaster.jobhunt.repository;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -50,7 +51,15 @@ public class EmployerRepository {
         employers.put(id, emp);
     }
 
-    public void deleteEmployerById(String id) {
-        employers.remove(id);
+    public Employer deleteEmployerById(String id) {
+        return employers.remove(id);
     }
+
+    public List<Employer> findByEmployer(String keyword) {
+        List<Employer> employerList = employers.values().stream().
+                filter(e -> e.getName().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toList());
+        return employerList;
+    }
+
 }

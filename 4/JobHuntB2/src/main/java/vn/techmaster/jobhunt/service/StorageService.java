@@ -33,7 +33,7 @@ public class StorageService {
         }
     }
 
-    public void deleteFile(String logoPath){
+    public void deleteFile(String logoPath) {
         String filePathToDelete = path + logoPath;
         try {
             Files.deleteIfExists(Paths.get(filePathToDelete));

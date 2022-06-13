@@ -16,7 +16,7 @@
     <header th:insert="template.html :: topmenu"></header>
 
     <div class="container border rounded col-4 mt-5 bg-light">
-      <h1 class="text-center mt-3" th:text="#{UpdateJobs}">Cập nhật việc làm</h1>
+      <h1 class="text-center text-info mt-3" th:text="#{UpdateJobs}">Cập nhật việc làm</h1>
       <form action="" class="col-12" th:object="${job}" method="POST">
         <label for="name" class="form-label ms-1 mt-3" th:text="#{NameCompany}">Nhà tuyển dụng</label>
         <select class="form-select" th:field="*{emp_id}">
@@ -33,15 +33,21 @@
           name="title"
           th:field="*{title}"
         />
-        <label for="description" class="form-label mt-2 ms-1" th:text="#{Description}">Mô tả</label>
-        <input
-          type="text"
-          class="form-control"
-          name="description"
-          th:field="*{description}"
-        />
-        <label for="city" class="form-label mt-2 ms-1" th:text="#{Location}">Địa điểm</label>
-        <select class="form-select mt-2" th:field="*{city}">
+
+        <div class="form-group mb-3 mt-3">
+          <label for="content" class="ms-1 mb-2" th:text="#{Description}"
+            >Content:</label>
+          <textarea
+            class="form-control"
+            rows="3"
+            th:field="*{description}"
+            name="content"
+            placeholder="Enter Description"
+          ></textarea>
+        </div>
+
+        <label for="city" class="form-label ms-1" th:text="#{Location}">Địa điểm</label>
+        <select class="mt-2" th:field="*{city}">
           <option
             th:each="city : ${T(vn.techmaster.jobhunt.model.City).values()}"
             th:value="${city}"

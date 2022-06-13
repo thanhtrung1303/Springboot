@@ -26,7 +26,7 @@
   <body>
     <header th:insert="template.html :: topmenu"></header>
     <div class="container mt-3">
-      <h1 th:text="#{ApplicantsList}">Danh sách ứng viên</h1>
+      <h1 class="text-info" th:text="#{ApplicantsList}">Danh sách ứng viên</h1>
       <table class="table table-bordered table-striped text-center mt-3">
         <thead>
           <tr>
@@ -125,7 +125,7 @@
 
       <div>
         <form action="/applicant/add">
-          <button class="btn btn-primary" th:text="#{AddApplicants}">Thêm ứng viên</button>
+          <button class="btn btn-outline-primary" th:text="#{AddApplicants}">Thêm ứng viên</button>
         </form>
       </div>
     </div>

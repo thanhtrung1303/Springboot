@@ -9,6 +9,7 @@ import com.example.userbackend.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -57,5 +58,11 @@ public class UserController {
     @PostMapping("/users/{id}/forgot-password")
     public String updatePassword(@PathVariable int id){
         return userService.forgotPassword(id);
+    }
+    
+    // upload file
+    @PostMapping("/users/{id}/upload-file")
+    public String uploadFile(@PathVariable int id, @ModelAttribute("file") MultipartFile file){
+        return null;
     }
 }

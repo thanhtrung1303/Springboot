@@ -15,9 +15,12 @@
   <body>
     <header th:insert="template.html :: topmenu"></header>
     <div class="container border rounded col-4 mt-5 bg-light">
-      <h1 class="text-center mt-3" th:text="#{AddJobs}">Thêm công việc</h1>
+      <h1 class="text-center text-info mt-3" th:text="#{AddJobs}">Thêm công việc</h1>
       <form class="col-12" th:object="${addJob}" method="POST">
-        <div class="form-floating mb-3 mt-3">
+        <div class="mb-3 mt-3">
+          <label for="title" class="ms-1 mb-2" th:text="#{NameCompany}"
+            >Công việc</label
+          >
           <select class="form-select" th:field="*{emp_id}">
             <option
               th:each="employer : ${employers}"
@@ -27,7 +30,10 @@
           </select>
         </div>
 
-        <div class="form-floating mb-3 mt-3">
+        <div class="mb-3 mt-3">
+          <label for="title" class="ms-1 mb-2" th:text="#{Jobs}"
+            >Công việc</label
+          >
           <input
             type="text"
             class="form-control"
@@ -35,24 +41,26 @@
             th:field="*{title}"
             placeholder="Enter Job"
           />
-          <label for="title" th:text="#{Jobs}">Công việc</label>
         </div>
 
-        <div class="form-floating mb-3 mt-3">
-          <input
-            type="text"
-            class="form-control"
-            name="description"
-            placeholder="Enter description"
-            th:field="*{description}"
-          />
-          <label for="description" class="form-label" th:text="#{Description}"
-            >Mô tả</label
+        <div class="form-group mb-3 mt-3">
+          <label for="content" class="ms-1" th:text="#{Description}"
+            >Content:</label
           >
+          <textarea
+            class="form-control"
+            rows="3"
+            th:field="*{description}"
+            name="content"
+            placeholder="Enter Description"
+          ></textarea>
         </div>
 
-        <div class="form-floating mb-3 mt-3">
-          <select class="form-select" th:field="*{city}">
+        <div class="mb-3 mt-3">
+          <label for="description" class="form-label ms-1" th:text="#{Location}"
+            >Thanh pho</label
+          >
+          <select class="" th:field="*{city}">
             <option
               th:each="city : ${T(vn.techmaster.jobhunt.model.City).values()}"
               th:value="${city}"
