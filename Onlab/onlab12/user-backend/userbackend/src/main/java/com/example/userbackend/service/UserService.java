@@ -10,6 +10,7 @@ import com.example.userbackend.request.UpdatePasswordRequest;
 import com.example.userbackend.request.UpdateUserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
@@ -136,6 +137,8 @@ public class UserService {
 
         return password;
     }
+
+    // upload file
     public String uploadFile(@PathVariable int id, MultipartFile file) {
         Optional<User> userOptional = findUser(id);
         if (userOptional.isEmpty()) {
@@ -145,7 +148,22 @@ public class UserService {
     }
 
     // xem file
+    public byte[] readFile(int id, String fileId) {
+        return fileService.readFile(id, fileId);
+    }
 
+    // xoa file
+    public void deleteFile(int id, String fileId) {
+        fileService.deleteFile(id, fileId);
+    }
+
+    // lay danh sach file
+    public List<String> getFiles(int id) {
+        if (findUser(id).isEmpty()) {
+            throw new NotFoundException("khong ton tai user co id " + id);
+        }
+        return fileService.getFiles(id);
+    }
 
     public Optional<User> findUser(int id) {
         return users.stream().filter(user -> user.getId() == id).findFirst();

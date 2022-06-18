@@ -8,6 +8,7 @@ import com.example.userbackend.request.UpdateUserRequest;
 import com.example.userbackend.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -61,8 +62,27 @@ public class UserController {
     }
     
     // upload file
-    @PostMapping("/users/{id}/upload-file")
+     @PostMapping("/users/{id}/upload-file")
     public String uploadFile(@PathVariable int id, @ModelAttribute("file") MultipartFile file){
-        return null;
+        return userService.uploadFile(id, file);
+    }
+
+    // xem file
+    @GetMapping(value = "/users/{id}/files/{fileId}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] readFile(@PathVariable int id, @PathVariable String fileId){
+        return userService.readFile(id, fileId);
+    }
+
+    // xoa file
+    @DeleteMapping("/users/{id}/files/{fileId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteFile(@PathVariable int id, @PathVariable String fileId){
+        userService.deleteFile(id, fileId);
+    }
+
+    // lay danh sach file upload
+    @GetMapping("/users/{id}/files")
+    public List<String> getFiles(@PathVariable int id){
+        return userService.getFiles(id);
     }
 }

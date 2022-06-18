@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #30598c;
+  --yellow: #ffd600;
+  --gray: #f4f7fa;
+  --p: #757575;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  background-color: var(--gray);
+  margin: 0;
+  font-size: 1rem;
+}
+
+nav {
+  background-color: var(--blue);
+}
+
+.bi-star {
+  color: var(--yellow);
+}
+
+.container {
+  max-width: 1320px;
+}
+
+.course-item {
+  height: 370px;
+}
+
+.check-radio {
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+}
+
+.image img,
+.img-logo img {
+  object-fit: cover;
+  width: 100%;
+  height: 225px;
+}
+
+.img-logo img {
+  height: 100px;
+  width: 100px;
+  margin-right: 30px;
+}
+
+.search-content {
+  position: relative;
+  width: 100%;
+}
+
+.bi-search {
+  color: #c4c4c4;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.info p {
+  color: var(--p);
+}
+
+
+
