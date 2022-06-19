@@ -51,7 +51,7 @@
 
       <table class="table table-bordered table-striped text-center mt-3">
         <thead>
-          <tr>
+          <tr class="bg-info">
             <th scope="col">Id</th>
             <th scope="col" th:text="#{Companies}">Nhà tuyển dụng</th>
             <th scope="col">Logo</th>
@@ -96,7 +96,7 @@
                 th:data-id="${employer.id}"
                 th:data-name="${employer.name}"
                 onclick="showConfirmModalDialog(this.getAttribute('data-id'), this.getAttribute('data-name'))"
-                class="btn btn-outline-danger ms-2"
+                class="btn btn-outline-danger"
               >
                 <i class="bi bi-trash"></i>
               </a>

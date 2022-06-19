@@ -73,7 +73,7 @@ public class EmployerController {
             e.printStackTrace();
         }
 
-        return "redirect:/";
+        return "redirect:/employer/list";
     }
 
     @GetMapping("/update/{id}")

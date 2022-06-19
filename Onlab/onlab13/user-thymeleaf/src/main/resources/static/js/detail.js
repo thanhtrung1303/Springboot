@@ -3,34 +3,31 @@ const URL_API = "/api/v1";
 let selectedFileId;
 
 // BEGIN Elements
-const nameElement = document.getElementById("fullname");
-const emailElement = document.getElementById("email");
-const phoneElement = document.getElementById("phone");
-const addressElement = document.getElementById("address");
-const btnSaveElement = document.getElementById("btn-save");
+const nameEl = document.getElementById("fullname");
+const emailEl = document.getElementById("email");
+const phoneEl = document.getElementById("phone");
+const addressEl = document.getElementById("address");
+const btnSaveEl = document.getElementById("btn-save");
 
-const oldPasswordElement = document.getElementById("old-password");
-const newPasswordElement = document.getElementById("new-password");
-const btnChangePasswordElement = document.getElementById("btn-change-password");
+const oldPasswordEl = document.getElementById("old-password");
+const newPasswordEl = document.getElementById("new-password");
+const btnChangePasswordEl = document.getElementById("btn-change-password");
 
-const btnForgotPasswordElement = document.getElementById("btn-forgot-password");
+const btnForgotPasswordEl = document.getElementById("btn-forgot-password");
 
-const imageContainerElement = document.querySelector(".image-container");
-const btnShowImagesElement = document.getElementById("btn-modal-image");
-const btnUpdateImageElement = document.getElementById("btn-chose-image");
-const btnDeleteImageElement = document.getElementById("btn-delete-image");
-const btnUploadImageElement = document.getElementById("avatar");
-const avatarPreviewElement = document.getElementById("avatar-preview");
-// END Elements
+const imageContainerEl = document.querySelector(".image-container");
+const btnShowImagesEl = document.getElementById("btn-modal-image");
+const btnUpdateImageEl = document.getElementById("btn-chose-image");
+const btnDeleteImageEl = document.getElementById("btn-delete-image");
+const btnUploadImageEl = document.getElementById("avatar");
+const avatarPreviewEl = document.getElementById("avatar-preview");
 
-// BEGIN Handle events
-// Update user
-btnSaveElement.addEventListener("click", async function () {
+btnSaveEl.addEventListener("click", async function () {
   try {
     let res = await axios.put(`${URL_API}/users/${user.id}`, {
-      name: nameElement.value,
-      phone: phoneElement.value,
-      address: addressElement.value,
+      name: nameEl.value,
+      phone: phoneEl.value,
+      address: addressEl.value,
     });
     if (res.data) {
       window.location.href = "/";
@@ -41,24 +38,24 @@ btnSaveElement.addEventListener("click", async function () {
 });
 
 // Update password
-btnChangePasswordElement.addEventListener("click", async function () {
+btnChangePasswordEl.addEventListener("click", async function () {
   try {
     await axios.put(`${URL_API}/users/${user.id}/update-password`, {
-      oldPassword: oldPasswordElement.value,
-      newPassword: newPasswordElement.value,
+      oldPassword: oldPasswordEl.value,
+      newPassword: newPasswordEl.value,
     });
     alert("Đổi mật khẩu thành công");
   } catch (error) {
     let message = error.response.data.message;
     alert(message);
   } finally {
-    oldPasswordElement.value = "";
-    newPasswordElement.value = "";
+    oldPasswordEl.value = "";
+    newPasswordEl.value = "";
   }
 });
 
 // Forgot password
-btnForgotPasswordElement.addEventListener("click", async function () {
+btnForgotPasswordEl.addEventListener("click", async function () {
   try {
     let res = await axios.put(`${URL_API}/users/${user.id}/forgot-password`);
     alert(`Mật khẩu mới là: ${res.data}`);
@@ -68,15 +65,13 @@ btnForgotPasswordElement.addEventListener("click", async function () {
 });
 
 // Reset selected image
-btnShowImagesElement.addEventListener("click", () => {
+btnShowImagesEl.addEventListener("click", () => {
   resetSelectImage();
   renderImages(images);
 });
 
 // Update avatar
-btnUpdateImageElement.addEventListener("click", () =>
-  updateAvatar(selectedFileId)
-);
+btnUpdateImageEl.addEventListener("click", () => updateAvatar(selectedFileId));
 
 async function updateAvatar(fileId) {
   try {
@@ -98,7 +93,7 @@ async function updateAvatar(fileId) {
 }
 
 // Delete image
-btnDeleteImageElement.addEventListener("click", async () => {
+btnDeleteImageEl.addEventListener("click", async () => {
   // Xoá trên server
   try {
     await axios.delete(`${URL_API}/users/${user.id}/files/${selectedFileId}`);
@@ -123,10 +118,10 @@ btnDeleteImageElement.addEventListener("click", async () => {
 });
 
 // Upload image
-btnUploadImageElement.addEventListener("change", async () => {
+btnUploadImageEl.addEventListener("change", async () => {
   try {
     let formData = new FormData();
-    formData.append("file", btnUploadImageElement.files[0]);
+    formData.append("file", btnUploadImageEl.files[0]);
     // Upload lên server
     let res = await axios.post(
       `${URL_API}/users/${user.id}/upload-file`,
@@ -150,14 +145,14 @@ btnUploadImageElement.addEventListener("change", async () => {
 
 // Hiển thị thông tin user
 const renderUser = () => {
-  nameElement.value = user.name;
-  emailElement.value = user.email;
-  phoneElement.value = user.phone;
-  addressElement.value = user.address;
+  nameEl.value = user.name;
+  emailEl.value = user.email;
+  phoneEl.value = user.phone;
+  addressEl.value = user.address;
   if (user.avatar == null || user.avatar == "") {
-    avatarPreviewElement.src = "https://via.placeholder.com/200";
+    avatarPreviewEl.src = "https://via.placeholder.com/200";
   } else {
-    avatarPreviewElement.src = `${URL_API}/users/${user.id}/files/${user.avatar}`;
+    avatarPreviewEl.src = `${URL_API}/users/${user.id}/files/${user.avatar}`;
   }
 };
 
@@ -176,7 +171,7 @@ const renderProvinces = (arr) => {
   arr.forEach((province) => {
     html += `<option value="${province.name}">${province.name}</option>`;
   });
-  addressElement.innerHTML = html;
+  addressEl.innerHTML = html;
 };
 
 const renderImages = (arr) => {
@@ -196,7 +191,7 @@ const renderImages = (arr) => {
       </div>
     `;
   }
-  imageContainerElement.innerHTML = html;
+  imageContainerEl.innerHTML = html;
 };
 
 const getFileId = (image) => {
@@ -211,19 +206,19 @@ const imageFromFileId = (fileId) => {
 const selectImage = (fileId) => {
   selectedFileId = fileId;
   renderImages(images);
-  btnUpdateImageElement.disabled = false;
-  btnDeleteImageElement.disabled = false;
+  btnUpdateImageEl.disabled = false;
+  btnDeleteImageEl.disabled = false;
 };
 
 const resetSelectImage = () => {
   selectedFileId = null;
-  btnUpdateImageElement.disabled = true;
-  btnDeleteImageElement.disabled = true;
+  btnUpdateImageEl.disabled = true;
+  btnDeleteImageEl.disabled = true;
 };
 
 const init = async () => {
   await getProvinces();
-  addressElement.value = user.address;
+  addressEl.value = user.address;
 };
 
 init();

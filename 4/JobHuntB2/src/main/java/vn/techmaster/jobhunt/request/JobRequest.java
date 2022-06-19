@@ -1,5 +1,7 @@
 package vn.techmaster.jobhunt.request;
 
+import javax.validation.constraints.NotBlank;
+
 import vn.techmaster.jobhunt.model.City;
 
 /**
@@ -13,7 +15,7 @@ import vn.techmaster.jobhunt.model.City;
 public record JobRequest(
     String id,
     String emp_id,
-    String title,
-    String description,
+        @NotBlank(message = "title cannot null") String title,
+        @NotBlank(message = "description cannot null") String description,
     City city) {
 }

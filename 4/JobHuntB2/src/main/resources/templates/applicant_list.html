@@ -29,7 +29,7 @@
       <h1 class="text-info" th:text="#{ApplicantsList}">Danh sách ứng viên</h1>
       <table class="table table-bordered table-striped text-center mt-3">
         <thead>
-          <tr>
+          <tr class="bg-info">
             <th scope="col">#</th>
             <th scope="col" th:text="#{Jobs}">Công việc</th>
             <th scope="col" th:text="#{Companies}">Nhà tuyển dụng</th>
@@ -123,11 +123,6 @@
         </div>
       </div>
 
-      <div>
-        <form action="/applicant/add">
-          <button class="btn btn-outline-primary" th:text="#{AddApplicants}">Thêm ứng viên</button>
-        </form>
-      </div>
     </div>
   </body>
 </html>

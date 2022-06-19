@@ -35,16 +35,16 @@ public class ApplicantController {
         return "applicant_list";
     }
 
-    @GetMapping("/add")
-    public String addApplicant(Model model) {
+    @GetMapping("/add/{id}")
+    public String addApplicant(Model model, @PathVariable String id) {
         model.addAttribute("applicant", new Applicant());
         model.addAttribute("jobs", jobRepository.listjob());
         model.addAttribute("employerRepository", employerRepository);
         return "applicant_add";
     }
 
-    @PostMapping("/add")
-    public String submitAddApplicant(@ModelAttribute ApplicantRequest applicantRequest) {
+    @PostMapping("/add/{id}")
+    public String AddApplicant(@ModelAttribute ApplicantRequest applicantRequest) {
         String uuid = UUID.randomUUID().toString();
         Applicant applicant = new Applicant(uuid, applicantRequest.job_id(), applicantRequest.name(),
                 applicantRequest.email(), applicantRequest.phone(), applicantRequest.skills());
@@ -62,7 +62,7 @@ public class ApplicantController {
     }
 
     @PostMapping("/update/{id}")
-    public String submitUpdateApplicant(@PathVariable String id, @ModelAttribute ApplicantRequest applicantRequest) {
+    public String UpdateApplicant(@PathVariable String id, @ModelAttribute ApplicantRequest applicantRequest) {
         Applicant applicant = new Applicant(id, applicantRequest.job_id(), applicantRequest.name(),
                 applicantRequest.email(), applicantRequest.phone(), applicantRequest.skills());
         applicantRepository.updateApplicant(applicant);

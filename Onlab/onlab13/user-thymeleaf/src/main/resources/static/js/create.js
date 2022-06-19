@@ -1,22 +1,22 @@
 const URL_API = "/api/v1";
 
-// Elements
-const btnSaveElement = document.getElementById("btn-save");
-const fullNameElement = document.getElementById("fullname");
-const emailElement = document.getElementById("email");
-const phoneElement = document.getElementById("phone");
-const addressElement = document.getElementById("address");
-const passwordElement = document.getElementById("password");
+
+const fullNameEl = document.getElementById("fullname");
+const emailEl = document.getElementById("email");
+const phoneEl = document.getElementById("phone");
+const addressEl = document.getElementById("address");
+const passwordEl = document.getElementById("password");
+const btnSaveEl = document.getElementById("btn-save");
 
 // Tạo user
-btnSaveElement.addEventListener("click", async function () {
+btnSaveEl.addEventListener("click", async function () {
   try {
     // Lấy thông tin ở tất cả các ô input
-    const name = fullNameElement.value;
-    const email = emailElement.value;
-    const phone = phoneElement.value;
-    const address = addressElement.value;
-    const password = passwordElement.value;
+    const name = fullNameEl.value;
+    const email = emailEl.value;
+    const phone = phoneEl.value;
+    const address = addressEl.value;
+    const password = passwordEl.value;
 
     // Gọi API
     let res = await axios.post(`${URL_API}/users`, {
@@ -52,7 +52,7 @@ const renderProvinces = (arr) => {
   arr.forEach((province) => {
     html += `<option value="${province.name}">${province.name}</option>`;
   });
-  addressElement.innerHTML = html;
+  addressEl.innerHTML = html;
 };
 
 getProvinces();
