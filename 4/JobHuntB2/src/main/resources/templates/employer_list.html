@@ -33,7 +33,7 @@
 
         <div class="col-3 mt-3">
           <form action="" th:action="@{/employer/list}" method="get">
-          <div class="input-group">
+            <div class="input-group">
               <input
                 type="search"
                 id="form"
@@ -65,6 +65,7 @@
             <td th:text="${iStat.index} +1"></td>
             <td>
               <a
+                class="text-decoration-none"
                 th:href="|update/${employer.id}|"
                 th:text="${employer.name}"
               ></a>
@@ -79,6 +80,7 @@
             </td>
             <td>
               <a
+                class="text-decoration-none"
                 th:href="${employer.website}"
                 th:text="${employer.website}"
               ></a>

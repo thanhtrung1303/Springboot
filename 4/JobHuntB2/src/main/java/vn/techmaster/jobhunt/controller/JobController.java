@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import vn.techmaster.jobhunt.model.Applicant;
 import vn.techmaster.jobhunt.model.Job;
 import vn.techmaster.jobhunt.repository.EmployerRepository;
 import vn.techmaster.jobhunt.repository.JobRepository;
@@ -76,4 +77,5 @@ public class JobController {
         jobRepository.deleteJobById(id);
         return "redirect:/job/list";
     }
+
 }
