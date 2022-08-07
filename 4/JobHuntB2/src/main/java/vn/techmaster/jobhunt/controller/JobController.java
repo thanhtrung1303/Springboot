@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import vn.techmaster.jobhunt.model.Applicant;
 import vn.techmaster.jobhunt.model.Job;
+import vn.techmaster.jobhunt.repository.ApplicantRepository;
 import vn.techmaster.jobhunt.repository.EmployerRepository;
 import vn.techmaster.jobhunt.repository.JobRepository;
+import vn.techmaster.jobhunt.request.ApplicantRequest;
 import vn.techmaster.jobhunt.request.JobRequest;
 
 @Controller
@@ -27,6 +29,9 @@ public class JobController {
     private JobRepository jobRepository;
     @Autowired
     private EmployerRepository employerRepository;
+
+    @Autowired
+    private ApplicantRepository applicantRepository;
 
     @GetMapping("/list")
     public String listJob(Model model, String keyword) {
@@ -76,6 +81,27 @@ public class JobController {
     public String deleteJob(@PathVariable String id) {
         jobRepository.deleteJobById(id);
         return "redirect:/job/list";
+    }
+
+    @GetMapping("/apply/{job_id}")
+    public String applyJob(Model model, @PathVariable String job_id) {
+        Job job = jobRepository.getById(job_id);
+
+        model.addAttribute("applicant", new Applicant());
+        model.addAttribute("job", job);
+        return "applicant_add";
+    }
+
+    @PostMapping("/apply/{job_id}")
+    public String AddApplicant(@ModelAttribute ApplicantRequest applicantRequest)
+    {
+    String uuid = UUID.randomUUID().toString();
+    Applicant applicant = new Applicant(uuid, applicantRequest.job_id(),
+    applicantRequest.name(),
+    applicantRequest.email(), applicantRequest.phone(),
+    applicantRequest.skills());
+    applicantRepository.createApplicant(applicant);
+    return "redirect:/applicant/list";
     }
 
 }

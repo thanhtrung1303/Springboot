@@ -5,8 +5,9 @@ public class Book {
     private String name;
     private String author;
 
-    public Book(){}
-    
+    public Book() {
+    }
+
     public Book(String id, String name, String author) {
         this.id = id;
         this.name = name;
@@ -42,5 +43,5 @@ public class Book {
         return "Book [author=" + author + ", id=" + id + ", name=" + name + "]";
     }
 
-    
+
 }

@@ -18,16 +18,18 @@
         Thêm ứng viên
       </h1>
       <form th:object="${applicant}" method="POST">
-        <div class="mb-3">
-          <label class="form-label ms-1" th:text="#{Jobs}">Tên</label>
-          <select class="form-select" th:field="*{job_id}">
-            <option
-              th:each="job : ${jobs}"
-              th:value="${job.id}"
-              th:text="${job.title}"
-            ></option>
-          </select>
+ 
+        <div class="mb-3" th:object="${job}">
+          <label class="form-label ms-1" for="job_id">Job</label>
+          <input
+            type="text"
+            class="form-control"
+            id="job_id"
+            th:value="${job.title}"
+            readonly
+          />
         </div>
+
         <div class="mb-3 mt-3">
           <label class="form-label ms-1" th:text="#{Name}">Tên</label>
           <input

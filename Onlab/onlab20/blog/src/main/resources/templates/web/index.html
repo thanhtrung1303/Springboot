@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{/layout/layout :: main-fragment(~{:: title}, ~{}, ~{:: #main}, ~{})}">
+
+<head>
+
+    <title>Trang Chủ</title>
+
+
+</head>
+
+<body>
+
+<th:block id="main">
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="heading-page header-text">
+        <section class="page-heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-content">
+                            <h4>Recent Posts</h4>
+                            <h2>Our Recent Blog Entries</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="blog-posts grid-system">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="all-blog-posts">
+                        <div class="row">
+                            <div class="col-lg-6" th:each="blog : ${blogs}">
+                                <div class="blog-post">
+                                    <div class="blog-thumb">
+                                        <img th:src="${blog.thumbnail}" th:alt="${blog.title}"/>
+                                    </div>
+                                    <div class="down-content">
+                                        <a th:href="@{/blogs/{id}/{slug} (id = ${blog.id}, slug =${blog.slug})}">
+                                            <h4 th:text="|${#strings.substring(blog.title,0,25)}...|">Donec tincidunt leo</h4>
+                                        </a>
+                                        <ul class="post-info">
+                                            <li><a href="#" th:text="${blog.authorInfo.name}">Admin</a></li>
+                                            <li>
+                                                <a href="#" th:text="${blog.pulishedAt}">31/05/2020</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" th:text="|${blog.countComment} Comments |">12 Comments</a>
+                                            </li>
+                                        </ul>
+                                        <p th:text="|${#strings.substring(blog.description,0,100)}...|">
+                                            Nullam nibh mi, tincidunt sed
+                                            sapien ut, rutrum hendrerit
+                                            velit. Integer auctor a mauris
+                                            sit amet eleifend.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <ul class="page-numbers">
+                                    <li><a href="#">1</a></li>
+                                    <li class="active">
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li><a href="#">3</a></li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sidebar-item search">
+                                    <form id="search_form" name="gs" method="GET" action="#">
+                                        <input type="text" name="q" class="searchText" placeholder="type to search..."
+                                               autocomplete="on"/>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="sidebar-item recent-posts">
+                                    <div class="sidebar-heading">
+                                        <h2>Recent Posts</h2>
+                                    </div>
+                                    <div class="content">
+                                        <ul>
+                                            <li th:each="blogsP : ${blogsPopular}">
+                                                <a th:href="@{/blogs/{id}/{slug} (id = ${blogsP.id}, slug =${blogsP.slug})}">
+                                                    <h5 th:text=|${#strings.substring(blogsP.description,0,100)}...|>
+                                                        Vestibulum id turpis
+                                                        porttitor sapien
+                                                        facilisis
+                                                        scelerisque
+                                                    </h5>
+                                                    <span th:text="${blogsP.pulishedAt}">31/05/2020</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="sidebar-item categories">
+                                    <div class="sidebar-heading">
+                                        <h2>Categories</h2>
+                                    </div>
+                                    <div class="content">
+                                        <ul>
+                                            <li th:each="category : ${categories}">
+                                                <a href="#" th:text="${category.name}">- Nature Lifestyle</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+
+
+</body>
+
+</html>
